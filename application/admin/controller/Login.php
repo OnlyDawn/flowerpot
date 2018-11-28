@@ -23,6 +23,11 @@ class Login extends Controller
      */
     public function verify()
     {
-        return 1;
+        $captcha = input('verify');
+        if(!captcha_check($captcha)){
+            //验证码错误
+        }else{
+            //验证码正确
+        }
     }
 }

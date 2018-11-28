@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"D:\work\flowerpot\public/../application/admin\view\login\login.html";i:1543252403;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"D:\work\flowerpot\public/../application/admin\view\login\login.html";i:1543354123;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -53,35 +53,35 @@
                 img.src = "/index.php/captcha?id="+ts;
             }
 		</script>
-		<script>
-			layui.use(['form', 'layedit', 'laydate'], function() {
-				var form = layui.form(),
-					layer = layui.layer;
+		<!--<script>-->
+			<!--layui.use(['form', 'layedit', 'laydate'], function() {-->
+				<!--var form = layui.form(),-->
+					<!--layer = layui.layer;-->
 
 
-				//自定义验证规则
-				// form.verify({
-				// 	title: function(value) {
-				// 		if(value.length < 5) {
-				// 			return '标题至少得5个字符啊';
-				// 		}
-				// 	},
-				// 	password: [/(.+){6,12}$/, '密码必须6到12位'],
-				// 	verity: [/(.+){6}$/, '验证码必须是6位'],
-				//
-				// });
+				<!--//自定义验证规则-->
+				<!--// form.verify({-->
+				<!--// 	title: function(value) {-->
+				<!--// 		if(value.length < 5) {-->
+				<!--// 			return '标题至少得5个字符啊';-->
+				<!--// 		}-->
+				<!--// 	},-->
+				<!--// 	password: [/(.+){6,12}$/, '密码必须6到12位'],-->
+				<!--// 	verity: [/(.+){6}$/, '验证码必须是6位'],-->
+				<!--//-->
+				<!--// });-->
 
 
-				//监听提交
-				form.on('submit(login)', function(data) {
-					// layer.alert(JSON.stringify(data.field), {
-					// 	title: '最终的提交信息'
-					// })
-					// return false;
-				});
+				<!--//监听提交-->
+				<!--form.on('submit(login)', function(data) {-->
+					<!--// layer.alert(JSON.stringify(data.field), {-->
+					<!--// 	title: '最终的提交信息'-->
+					<!--// })-->
+					<!--// return false;-->
+				<!--});-->
 
-			});
-		</script>
+			<!--});-->
+		<!--</script>-->
 	</body>
 
 </html>
