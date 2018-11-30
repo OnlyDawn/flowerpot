@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"D:\work\flowerpot\public/../application/admin\view\index\index.html";i:1543405496;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"D:\work\flowerpot\public/../application/admin\view\index\index.html";i:1543585727;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +18,7 @@
 				</div>
 				<ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
 			      <li class="layui-nav-item">
-					<a href="/index.php/admin/carousel/index"  target="iframe" data-id='4' data-text="轮播管理"><i class="iconfont">&#xe60c;</i>轮播管理</a>
+					<a href="/admin/carousel/index" target="iframe" data-id='4' data-text="轮播管理"><i class="iconfont">&#xe60c;</i>轮播管理</a>
 				  </li>
 				  <li class="layui-nav-item">
 				    <a href="javascript:;" data-url="email.html" data-id='4' data-text="商品管理"><i class="iconfont">&#xe602;</i>商品管理</a>
@@ -30,7 +30,7 @@
 					<a href="javascript:;" data-url="email.html" data-id='4' data-text="工程案例"><i class="iconfont">&#xe639;</i>工程案例</a>
 				  </li>
 				  <li class="layui-nav-item">
-     		        <a href="javascript:;" data-url="email.html" data-id='4' data-text="分类管理"><i class="iconfont">&#xe604;</i>分类管理</a>
+     		        <a href="/admin/category/index" target="iframe" data-id='4' data-text="分类管理"><i class="iconfont">&#xe604;</i>分类管理</a>
 				  </li>
 				</ul>
 			</div>
@@ -56,7 +56,7 @@
 					<!--tab 切换-->
 					<div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
 					  <ul class="layui-tab-title">
-					    <li class="layui-this welcome">后台主页</li>
+					    <!--<li class="layui-this welcome">后台主页</li>-->
 					  </ul>
 					  <div class="layui-tab-content">
 					    <div class="layui-tab-item layui-show" style="background: #f5f5f5;">
