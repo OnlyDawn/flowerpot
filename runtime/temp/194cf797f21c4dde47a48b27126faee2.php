@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"D:\work\flowerpot\public/../application/admin\view\index\index.html";i:1543585727;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"D:\work\flowerpot\public/../application/admin\view\index\index.html";i:1543628408;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,7 +21,7 @@
 					<a href="/admin/carousel/index" target="iframe" data-id='4' data-text="轮播管理"><i class="iconfont">&#xe60c;</i>轮播管理</a>
 				  </li>
 				  <li class="layui-nav-item">
-				    <a href="javascript:;" data-url="email.html" data-id='4' data-text="商品管理"><i class="iconfont">&#xe602;</i>商品管理</a>
+				    <a href="/admin/goods/index" target="iframe" data-id='4' data-text="商品管理"><i class="iconfont">&#xe602;</i>商品管理</a>
 				  </li>
 				  <li class="layui-nav-item">
 				    <a href="javascript:;" data-url="email.html" data-id='4' data-text="新闻资讯"><i class="iconfont">&#xe605;</i>新闻资讯</a>

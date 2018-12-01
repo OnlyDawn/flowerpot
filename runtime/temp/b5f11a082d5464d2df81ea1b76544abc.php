@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:70:"D:\work\flowerpot\public/../application/admin\view\category\index.html";i:1543590200;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:70:"D:\work\flowerpot\public/../application/admin\view\category\index.html";i:1543642220;}*/ ?>
 <!DOCTYPE html>
 <html class="iframe-h">
 
@@ -22,7 +22,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>名称</th>
+                    <th>分类名称</th>
                     <th>操作</th>
                 </tr>
                 </thead>

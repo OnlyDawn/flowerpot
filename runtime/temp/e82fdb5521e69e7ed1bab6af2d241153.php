@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:70:"D:\work\flowerpot\public/../application/admin\view\carousel\index.html";i:1543642188;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"D:\work\flowerpot\public/../application/admin\view\goods\index.html";i:1543642159;}*/ ?>
 <!DOCTYPE html>
 <html class="iframe-h">
 
@@ -21,24 +21,25 @@
 							<thead>
 								<tr>
 									<th>ID</th>
-									<th>轮播名称</th>
-									<th>图片</th>
+									<th>商品标题</th>
+									<th>商品图片</th>
+									<th>所属分类</th>
 									<th>排序</th>
 									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
-							<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$carousel): $mod = ($i % 2 );++$i;?>
+							<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$goods): $mod = ($i % 2 );++$i;?>
 							<tr>
-								<td class="hidden-xs"><?php echo $carousel['id']; ?></td>
-								<td class="hidden-xs"><?php echo $carousel['title']; ?></td>
-								<td class="hidden-xs"><img src="http://www.flowerpot.com\\<?php echo $carousel['image']; ?>" alt="" width="200px"></td>
-								<td class="hidden-xs"><?php echo $carousel['sort']; ?></td>
+								<td class="hidden-xs"><?php echo $goods['id']; ?></td>
+								<td class="hidden-xs"><a href="<?php echo $goods['url']; ?>"><?php echo $goods['name']; ?></a></td>
+								<td class="hidden-xs"><img src="http://www.flowerpot.com\\<?php echo $goods['image']; ?>" alt="" width="200px"></td>
+								<td class="hidden-xs"><?php echo $goods['categoryName']; ?></td>
+								<td class="hidden-xs"><?php echo $goods['sort']; ?></td>
 								<td>
-									<!---onclick="update(<?php echo $carousel['id']; ?>)"-->
 									<div class="layui-inline">
-										<button class="layui-btn layui-btn-small layui-btn-normal" data-id="1" onclick="update(<?php echo $carousel['id']; ?>)" ><i class="layui-icon">&#xe642;</i></button>
-										<button class="layui-btn layui-btn-small layui-btn-danger del-btn" data-id="1"  onclick="is_delete(<?php echo $carousel['id']; ?>)"><i class="layui-icon">&#xe640;</i></button>
+										<button class="layui-btn layui-btn-small layui-btn-normal" data-id="1" onclick="update(<?php echo $goods['id']; ?>)"><i class="layui-icon">&#xe642;</i></button>
+										<button class="layui-btn layui-btn-small layui-btn-danger del-btn" data-id="1"  onclick="is_delete(<?php echo $goods['id']; ?>)"><i class="layui-icon">&#xe640;</i></button>
 									</div>
 								</td>
 							</tr>
@@ -59,17 +60,17 @@
 <script>
 	function add()
 	{
-        window.location.href='/index.php/admin/carousel/add';
+        window.location.href='/admin/goods/add';
     }
     function update(id)
 	{
-        window.location.href='/index.php/admin/carousel/update?id='+id;
+        location.href='/admin/goods/update?id='+id;
     }
     function is_delete(id){
         layer.confirm('确定要删除吗？', {
             btn: ['确定', '取消'] //可以无限个按钮
         }, function(index, layero){
-            window.location.href='/index.php/admin/carousel/delete?id='+id;
+            window.location.href='/index.php/admin/goods/delete?id='+id;
         }, function(index){
             //按钮【按钮二】的回调
         });

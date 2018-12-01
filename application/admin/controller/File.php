@@ -15,11 +15,20 @@ class File extends Controller
      */
     public function Upload()
     {
-        $file = request()->file('image');
+        $file = request()->file('file');
         if($file) {
             $FileUpload = new FileUpload();
             $upload = $FileUpload->Upload($file);
-            return json_encode($upload);
+            if($upload){
+                $return = ['code'=>0,'msg'=>'','data'=>[]];
+                $data = [];
+                $data['src'] = '/uploads/'.$upload;
+                $return['data'] = $data;
+            }else{
+                $return['code'] = 'error';
+            }
+
+            return json_encode($return);
         }
     }
 }

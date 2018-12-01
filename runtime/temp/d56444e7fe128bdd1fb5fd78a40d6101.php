@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:68:"D:\work\flowerpot\public/../application/admin\view\carousel\add.html";i:1543419712;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:68:"D:\work\flowerpot\public/../application/admin\view\carousel\add.html";i:1543593131;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -27,6 +27,9 @@
 									<label class="layui-form-label">图像上传：</label>
 									<div class="layui-upload">
 										<input type="file" name="image" accept="image/*" required lay-verify="require|file" id="">
+									</div>
+									<div class="layui-input-block">
+										<input type="file" name="file（可随便定义）" class="layui-upload-file">
 									</div>
 								</div>
 								<div class="layui-form-item">
