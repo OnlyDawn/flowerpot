@@ -3,22 +3,22 @@
 namespace app\admin\controller;
 
 use \think\Controller;
-use \think\Request;
 use \think\Db;
-
+use \think\Request;
 use app\admin\model\FileUpload;
 
 /*
- * 轮播管理
+ * 工程案例
  */
-class Carousel extends Controller
+class ProjectCase extends Controller
 {
     /*
      * 列表
      */
     public function Index()
     {
-        $list = Db::name('carousel')->order('id desc')->paginate(10);
+        $list = Db::name('project_case')
+            ->order('id desc')->paginate(10);
         $page = $list->render();
         $this->assign('list',$list);
         $this->assign('page',$page);
@@ -55,9 +55,9 @@ class Carousel extends Controller
                     'image' => 'uploads\\'.$image,
                     'sort' => $sort
                 ];
-                $insert = Db::name('carousel')->insert($data);
+                $insert = Db::name('project_case')->insert($data);
                 if($insert){
-                    $this->redirect('index.php/admin/carousel/index');
+                    $this->redirect('index.php/admin/project_case/index');
                 }else{
                     $this->error('添加失败，请重新添加');
                 }
@@ -94,29 +94,25 @@ class Carousel extends Controller
                 //检查id是否存在
                 $id = input('post.id');
                 if($id){
-                  $findInfo = Db::name('carousel')->find($id);
-                  if($findInfo){
-                      //删除之前的图片
-                      $file = ROOT_PATH.'/public/'.$findInfo['image'];
-                      if(file_exists($file)){
-                          unlink($file);
-                      }
-                  }
-                }else{
-                    $this->error('修改失败，请重新修改');
+                    $findInfo = Db::name('project_case')->find($id);
+                    if($findInfo){
+                        //删除之前的图片
+                        unlink(ROOT_PATH.'/public/'.$findInfo['image']);
+                    }
                 }
                 //修改
+                $image = $fileUploadStr;
                 $title = input('post.title');
                 $sort = input('post.sort');
                 $data = [
                     'id' => $id,
                     'title' => $title,
-                    'image' => 'uploads\\'.$fileUploadStr,
+                    'image' => 'uploads\\'.$image,
                     'sort' => $sort
                 ];
-                $update = Db::name('carousel')->update($data);
+                $update = Db::name('project_case')->update($data);
                 if($update){
-                    $this->redirect('index.php/admin/carousel/index');
+                    $this->redirect('index.php/admin/project_case/index');
                 }else{
                     $this->error('修改失败，请重新修改');
                 }
@@ -126,8 +122,8 @@ class Carousel extends Controller
         }else{
             $id = Request::instance()->get('id');
             if ($id) {
-                $carouselInfo = Db::name('carousel')->where('id', $id)->find();
-                $this->assign('data',$carouselInfo);
+                $projectCaseInfo = Db::name('project_case')->where('id', $id)->find();
+                $this->assign('data',$projectCaseInfo);
                 return $this->fetch('update');
             }
         }
@@ -139,16 +135,13 @@ class Carousel extends Controller
     public function Delete()
     {
         $id = Request::instance()->get('id');
-        $findInfo = Db::name('carousel')->find($id);
+        $findInfo = Db::name('project_case')->find($id);
         if($findInfo) {
             //删除图片
-            $file = ROOT_PATH.'/public/'.$findInfo['image'];
-            if(file_exists($file)){
-                unlink($file);
-            }
-            $delete = Db::name('carousel')->delete($id);
+            unlink(ROOT_PATH.'/public/'.$findInfo['image']);
+            $delete = Db::name('project_case')->delete($id);
             if($delete){
-                $this->redirect('index.php/admin/carousel/index');
+                $this->redirect('index.php/admin/project_case/index');
             }else{
                 $this->error('请重新删除');
             }

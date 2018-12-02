@@ -21,7 +21,7 @@ class Goods extends Controller
             ->alias('g')
             ->field('g.*,c.name as categoryName')
             ->join('fp_category c','g.category_id=c.id')
-            ->order('g.id desc')->paginate(10);
+            ->order('g.id desc')->paginate(2);
         $page = $list->render();
         $this->assign('list',$list);
         $this->assign('page',$page);
@@ -102,9 +102,21 @@ class Goods extends Controller
             $file = request()->file('image');
             $fileUploadStr = $FileUpload->Upload($file);
             if($fileUploadStr && is_string($fileUploadStr)){
-                //上传
-                $image = $fileUploadStr;
+                //检查id是否存在
                 $id = input('post.id');
+                if($id){
+                    $findInfo = Db::name('goods')->find($id);
+                    if($findInfo){
+                        //删除之前的图片
+                        $file = ROOT_PATH.'/public/'.$findInfo['image'];
+                        if(file_exists($file)){
+                            unlink($file);
+                        }
+                    }
+                }else{
+                    $this->error('修改失败，请重新修改');
+                }
+
                 $name = input('post.name');
                 $category_id = input('post.category_id');
                 $content = input('post.content');
@@ -113,7 +125,7 @@ class Goods extends Controller
                 $data = [
                     'id' => $id,
                     'name' => $name,
-                    'image' => 'uploads\\'.$image,
+                    'image' => 'uploads\\'.$fileUploadStr,
                     'category_id' => $category_id,
                     'content' => $content,
                     'url' => $url,
@@ -156,7 +168,10 @@ class Goods extends Controller
         $findInfo = Db::name('goods')->find($id);
         if($findInfo) {
             //删除图片
-            unlink(ROOT_PATH.'/public/'.$findInfo['image']);
+            $file = ROOT_PATH.'/public/'.$findInfo['image'];
+            if(file_exists($file)){
+                unlink($file);
+            }
             $delete = Db::name('goods')->delete($id);
             if($delete){
                 $this->redirect('/admin/goods/index');

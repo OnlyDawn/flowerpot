@@ -29,7 +29,7 @@ return [
     // 扩展函数文件
     'extra_file_list'        => [THINK_PATH . 'helper' . EXT],
     // 默认输出类型
-    'default_return_type'    => 'html',
+    'default_return_type'    => 'json',
     // 默认AJAX 数据返回格式,可选json xml ...
     'default_ajax_return'    => 'json',
     // 默认JSONP格式返回的处理方法
@@ -139,8 +139,7 @@ return [
         // 标签库标签结束标记
         'taglib_end'   => '}',
         'tpl_replace_string' =>[
-//            '__PUBLIC__' => $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['SCRIPT_NAME'])),
-            '__PUBLIC__' => '',
+            '__PUBLIC__' => $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['SCRIPT_NAME'])),
             ],
     ],
 

@@ -13,7 +13,7 @@
 
 <body>
 <div class="page-content-wrap">
-    <form class="layui-form" action="/admin/goods/add" method="post" enctype="multipart/form-data">
+    <form class="layui-form" action="/admin/news/add" method="post">
         <div class="layui-tab" style="margin: 0;">
             <ul class="layui-tab-title">
             </ul>
@@ -21,45 +21,21 @@
                 <div class="layui-tab-item"></div>
                 <div class="layui-tab-item layui-show">
                     <div class="layui-form-item">
-                        <label class="layui-form-label">商品名称 ：</label>
+                        <label class="layui-form-label">资讯标题 ：</label>
                         <div class="layui-input-block">
-                            <input type="text" name="name" required lay-verify="required" placeholder="请输入商品名称" autocomplete="off" class="layui-input">
+                            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">商品：</label>
+                        <label class="layui-form-label">作者 ：</label>
                         <div class="layui-input-block">
-                            <select name="category_id" lay-verify="required">
-                                <option value="">请选择分类栏目</option>
-                                {volist name='category' id='data'}
-                                    <option value="{$data.id}">{$data.name}</option>
-                                {/volist}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">图像上传：</label>
-                        <div class="layui-upload">
-                            <input type="file" name="image" accept="image/*" required lay-verify="require|file" id="">
+                            <input type="text" name="author" required lay-verify="required" placeholder="请输入作者" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text">
-                        <label class="layui-form-label">商品内容：</label>
+                        <label class="layui-form-label">文章内容：</label>
                         <div class="layui-input-block">
                             <textarea id="LAY_demo_editor" name="content"  style="display: none;"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">商品排序：</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="sort" required lay-verify="required|number" placeholder="请输入数字" autocomplete="off" class="layui-input" value="">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">商品链接：</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="url" required lay-verify="required|url" placeholder="请输入商品url" autocomplete="off" class="layui-input" value="">
                         </div>
                     </div>
                 </div>

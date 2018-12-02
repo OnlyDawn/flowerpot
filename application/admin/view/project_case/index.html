@@ -20,24 +20,24 @@
 							<thead>
 								<tr>
 									<th>ID</th>
-									<th>轮播名称</th>
+									<th>工程名称</th>
 									<th>图片</th>
 									<th>排序</th>
 									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
-							{volist name='list' id='carousel'}
+							{volist name='list' id='project_case'}
 							<tr>
-								<td class="hidden-xs">{$carousel.id}</td>
-								<td class="hidden-xs">{$carousel.title}</td>
-								<td class="hidden-xs"><img src="__PUBLIC__\{$carousel.image}" alt="" width="200px"></td>
-								<td class="hidden-xs">{$carousel.sort}</td>
+								<td class="hidden-xs">{$project_case.id}</td>
+								<td class="hidden-xs">{$project_case.title}</td>
+								<td class="hidden-xs"><img src="__PUBLIC__\{$project_case.image}" alt="" width="200px"></td>
+								<td class="hidden-xs">{$project_case.sort}</td>
 								<td>
-									<!---onclick="update({$carousel.id})"-->
+									<!---onclick="update({$project_case.id})"-->
 									<div class="layui-inline">
-										<button class="layui-btn layui-btn-small layui-btn-normal" data-id="1" onclick="update({$carousel.id})" ><i class="layui-icon">&#xe642;</i></button>
-										<button class="layui-btn layui-btn-small layui-btn-danger" data-id="1"  onclick="is_delete({$carousel.id})"><i class="layui-icon">&#xe640;</i></button>
+										<button class="layui-btn layui-btn-small layui-btn-normal" data-id="1" onclick="update({$project_case.id})" ><i class="layui-icon">&#xe642;</i></button>
+										<button class="layui-btn layui-btn-small layui-btn-danger del-btn" data-id="1"  onclick="is_delete({$project_case.id})"><i class="layui-icon">&#xe640;</i></button>
 									</div>
 								</td>
 							</tr>
@@ -58,17 +58,17 @@
 <script>
 	function add()
 	{
-        window.location.href='/index.php/admin/carousel/add';
+        window.location.href='/index.php/admin/project_case/add';
     }
     function update(id)
 	{
-        window.location.href='/index.php/admin/carousel/update?id='+id;
+        window.location.href='/index.php/admin/project_case/update?id='+id;
     }
     function is_delete(id){
         layer.confirm('确定要删除吗？', {
             btn: ['确定', '取消'] //可以无限个按钮
         }, function(index, layero){
-            window.location.href='/index.php/admin/carousel/delete?id='+id;
+            window.location.href='/index.php/admin/project_case/delete?id='+id;
         }, function(index){
             //按钮【按钮二】的回调
         });
