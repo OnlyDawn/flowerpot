@@ -10,7 +10,7 @@ use app\api\model\ErrorCode;
 /*
  * 轮播图
  */
-class Carousel extends Controller
+class Carousel extends Common
 {
     /*
      * 轮播图数据
@@ -19,7 +19,14 @@ class Carousel extends Controller
     {
         $return = ['code'=>0,'message'=>'','data'=>null];
 
-        $CarouselData = Db::name('carousel')->order('sort desc')->select();
+        $type = input('type');
+        if($type=='web'){
+            $type = 1;
+        }else{
+            $type = 2;
+        }
+
+        $CarouselData = Db::name('carousel')->field("id,title,image,sort")->where(['type'=>$type])->order('sort desc')->select();
 
         if($CarouselData) {
             $return['data'] = $CarouselData;

@@ -7,7 +7,7 @@ use \think\Controller;
 /*
  * 首页
  */
-class Index extends Controller
+class Index extends Common
 {
     /*
      * 导航首页

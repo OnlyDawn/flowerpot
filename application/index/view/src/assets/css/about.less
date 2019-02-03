@@ -1,0 +1,148 @@
+
+.about_list{
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+	.bglist-box{
+		float:left;
+		width:50%;
+		img{
+			width: 100%;
+		}
+		.bglist{
+			background: url(../img/aboutlist_01.jpg) no-repeat left top;
+			background-size: 100%;
+			padding-top: 37%;
+			padding-bottom: 8%;
+			text-align: center;
+			line-height: 36px;
+			color: #fff;
+			h5{
+				font-size: 19px;
+				padding-top: 10px;
+				font-weight:400;
+			}
+			p{
+				font-size: 16px;
+			}
+		}
+		.about_list_text{
+			margin-top: 6%;
+			p{
+				color: #7c7c7c;
+				line-height: 26px;
+				font-size: 14px;
+				text-indent: 28px;
+				padding-bottom: 10px;
+			}
+		}
+	}
+	.bglist-box:nth-of-type(1){
+		padding-right: 5%;
+	}
+	.bglist-box:nth-of-type(2){
+		padding-left: 5%;
+	}
+}
+.twoAbout{
+	padding-top: 20px;
+}
+.aboutlist_con_map{
+	border-top: 1px #a6a6a6 dashed;
+	#dituContent{
+		border:#ccc solid 1px;
+		margin: 0 auto;
+		max-width: 1198px;
+	}
+}
+
+@media (min-width:969px){
+	.aboutlist_con_map{
+		padding: 60px 20px;
+		margin-top: 60px;
+		#dituContent{
+			width: 100%;
+			height:450px;
+		}
+	}
+}
+// @media (max-width:1119px) and (min-width:968px){}
+@media (max-width:968px) and (min-width:769px){
+	.about_list{
+		.bglist-box{
+			.bglist{
+				line-height:180%;
+				h5{
+					font-size: 16px;
+				}
+				p{
+					font-size: 14px;
+				}
+			}
+			.about_list_text{
+				margin-top:0;
+				p{
+					color: #7c7c7c;
+					line-height: 26px;
+					font-size: 14px;
+					text-indent: 28px;
+					padding-bottom: 10px;
+				}
+			}
+		}
+		.bglist-box:nth-of-type(1){
+			padding-right:2%;
+		}
+		.bglist-box:nth-of-type(2){
+			padding-left: 2%;
+		}
+	}
+	.aboutlist_con_map{
+		padding: 40px 20px;
+		margin-top: 40px;
+		#dituContent{
+			width: 100%;
+			height:350px;
+		}
+	}
+}
+@media (max-width:768px){
+	.twoAbout{
+		padding-top: 0;
+	}
+	.about_list{
+		.bglist-box{
+			padding-right: 0;
+			width:100%;
+			.bglist{
+				line-height:180%;
+				h5{
+					font-size: 16px;
+				}
+				p{
+					font-size: 14px;
+				}
+			}
+			.about_list_text{
+				p{
+					color: #7c7c7c;
+					line-height: 26px;
+					font-size: 14px;
+					text-indent: 28px;
+					padding-bottom: 10px;
+				}
+			}
+		}
+		.bglist-box:nth-of-type(1),.bglist-box:nth-of-type(2){
+			padding: 0;
+		}
+	}
+	.aboutlist_con_map{
+		padding: 20px 20px;
+		margin-top: 20px;
+		#dituContent{
+			width:100%;
+			height:240px;
+		}
+	}
+}

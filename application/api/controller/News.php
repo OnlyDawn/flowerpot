@@ -8,7 +8,7 @@ use \think\Db;
 /*
  * 新闻资讯
  */
-class News extends Controller
+class News extends Common
 {
     /*
      * 列表数据

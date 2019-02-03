@@ -1,0 +1,180 @@
+.wrapper{
+    max-width:1200px;
+		/* width: 100%; */
+    margin:0 auto;
+}
+.wrapper li{
+    position: relative;
+    width: 269px;
+    height: 132px;
+    list-style:none;
+    margin: 12px;
+    display: inline-block;
+    perspective: 300px;
+  }
+  .picBox{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50% -135px;
+    animation: 200ms ease-out 0ms 1 normal forwards;
+  }
+	.picBox.logo{
+		transform-origin:center;
+	}
+.show img{
+		display: block;
+		width: 100%;
+		border: 1px solid #f0f0f0;
+}
+.show,
+.hide{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+.hide{
+    color:#fff;
+    background-color:#fff;
+    text-align:center;
+    line-height:135px;		
+	background-size: 60% !important;
+    transform: translate3d(0,0,-1px);
+}
+.hide h3{
+		display: none;
+	}
+.bbb li:nth-of-type(1) .hide{
+		background:url(../img/p1.png) no-repeat center center,#fff;
+	}.bbb li:nth-of-type(2) .hide{
+		background:url(../img/p2.png) no-repeat center center,#fff;
+	}.bbb li:nth-of-type(3) .hide{
+		background:url(../img/p3.png) no-repeat center center,#fff;
+	}.bbb li:nth-of-type(4) .hide{
+		background:url(../img/p4.png) no-repeat center center,#fff;
+	}.bbb li:nth-of-type(5) .hide{
+		background:url(../img/p5.png) no-repeat center center,#fff;
+	}.bbb li:nth-of-type(6) .hide{
+		background:url(../img/p6.png) no-repeat center center,#fff;
+	}.bbb li:nth-of-type(7) .hide{
+		background:url(../img/p7.png) no-repeat center center,#fff;
+	}.bbb li:nth-of-type(8) .hide{
+		background:url(../img/p8.png) no-repeat center center,#fff;
+	}
+.hide h3{
+	font-weight: normal;
+}
+
+
+.in-top .hide,
+.out-top .hide
+ {
+    transform-origin: 0% 100%;
+    transform: translate3d(0, -100%, 0) rotate3d(1,0,0,90deg);
+}
+.in-top .picBox{
+    animation-name: in-top;
+    animation-play-state: running;
+}
+.out-top .picBox{
+    animation-name: out-top;
+    animation-play-state: running;
+}
+@keyframes in-top {
+    from  {transform: rotate3d(0,0,0,0deg)}
+    to    {transform: rotate3d(-1,0,0,90deg)}
+} 
+
+@keyframes out-top {
+    from {transform: rotate3d(-1,0,0,90deg)}
+    to   {transform: rotate3d(0,0,0,0deg)}
+}
+.in-right .hide,
+.out-right .hide {
+          transform-origin: 0% 0%;
+          transform: translate3d(100%, 0, 0) rotate3d(0,1,0,90deg);
+}
+.in-right .picBox{
+    animation-name: in-right;
+    animation-play-state: running;
+}
+.out-right .picBox{
+    animation-name: out-right;
+    animation-play-state: running;
+}
+@keyframes in-right {
+    from  {transform: rotate3d(0,0,0,0deg)}
+    to    {transform: rotate3d(0,-1,0,90deg)}
+}
+
+@keyframes out-right {
+    from  {transform: rotate3d(0,-1,0,90deg)}
+    to    {transform: rotate3d(0,0,0,0deg)}
+}
+
+.in-bottom .hide,
+.out-bottom .hide {
+          transform-origin: 0% 0%;
+          transform: translate3d(0, 100%, 0) rotate3d(-1,0,0,90deg);
+}
+.in-bottom .picBox{
+    animation-name: in-bottom;
+    animation-play-state: running;
+}
+.out-bottom .picBox{
+    animation-name: out-bottom;
+    animation-play-state: running;
+}
+@keyframes in-bottom {
+    from  {transform: rotate3d(0,0,0,0deg)}
+    to    {transform: rotate3d(1,0,0,90deg)}
+}
+@keyframes out-bottom {
+    from  {transform: rotate3d(1,0,0,90deg)}
+    to    {transform: rotate3d(0,0,0,0deg)}
+}
+.in-left .hide,
+.out-left .hide {
+          transform-origin: 100% 0;
+          transform: translate3d(-100%,0,0) rotate3d(0,-1,0,90deg);
+}
+@keyframes in-left {
+    from  {transform: rotate3d(0,0,0,0deg)}
+    to    {transform: rotate3d(0,1,0,90deg)}
+}
+@keyframes out-left {
+    from  {transform: rotate3d(0,1,0,90deg)}
+    to    {transform: rotate3d(0,0,0,0deg)}
+}
+.in-left .picBox{
+          animation-name: in-left;
+          animation-play-state: running;
+}
+.out-left .picBox{
+          animation-name: out-left;
+          animation-play-state: running;
+}
+.sss li{
+	width: 33.3333%;
+	height: auto;
+	padding: 6px;
+	margin: 0 !important;
+	box-sizing: border-box;
+	float: left;
+}
+.sss li img{
+	width: 100%;
+	border: 1px solid #f0f0f0;
+}
+@media (min-width:768px) {
+	.wrapper{
+	    width:1200px !important;
+	}
+}
+
+

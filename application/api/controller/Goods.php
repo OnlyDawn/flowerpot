@@ -11,7 +11,7 @@ use think\Request;
 /*
  * 商品
  */
-class Goods extends Controller
+class Goods extends Common
 {
     /*
      * 列表数据
@@ -20,17 +20,29 @@ class Goods extends Controller
     {
         $return = ['code'=>0,'message'=>'','data'=>null];
 
+        //分类id
+        $category_id = input('get.category_id');
+
         //每页显示条数
         $pageNum = input('get.page_num');
         if(!$pageNum){
             $pageNum = 20;
         }
 
-        $list = Db::name('goods')
-            ->alias('g')
-            ->field('g.*,c.name as categoryName')
-            ->join('fp_category c','g.category_id=c.id')
-            ->order('g.id desc')->paginate((int)$pageNum);
+        if($category_id){
+            $list = Db::name('goods')
+                ->alias('g')
+                ->field('g.*,c.name as categoryName')
+                ->where('category_id',$category_id)
+                ->join('fp_category c','g.category_id=c.id')
+                ->order('g.id desc')->paginate((int)$pageNum);
+        }else {
+            $list = Db::name('goods')
+                ->alias('g')
+                ->field('g.*')
+                ->join('fp_category c', 'g.category_id=c.id')
+                ->order('g.id desc')->paginate((int)$pageNum);
+        }
 
         $return['data'] = $list;
         return $return;

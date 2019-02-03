@@ -1,0 +1,124 @@
+.enginerringCase{
+	padding-bottom: 4.5%;
+	.case{
+		width: 100%;
+		.wrap{
+			max-width: 1200px;
+			width: 100%;
+			margin: 0 auto;
+			/* 图片列表样式 */
+			.list{
+				ul{
+					li{
+						width: calc(~"50% - 22px");
+						float: left;
+						margin: 0 10px 25px 10px;
+						.img{
+							overflow: hidden;
+							position: relative;
+							img{
+								width: 100%;
+								display: block;
+							}
+							p{
+								position: absolute;
+								bottom: -50px;
+								left: 0;
+								width: 100%;
+								line-height: 50px;
+								color: #fff;
+								font-size: 18px;
+								text-align: center;
+								background: url(../img/zhe1.png) center center repeat;
+								transition: all 0.3s;
+							}
+						}
+						.pp{
+							text-align: center;
+							height: 50px;
+							line-height: 50px;
+							font-size: 18px;
+							letter-spacing: 1px;
+							color: #000;
+						}
+					}
+					li:hover .img p{
+						bottom:0;
+					}
+				}
+			}
+			/* 分页器样式 */
+			.page{
+				margin: 0 auto;
+				overflow: hidden;
+				text-align: center;
+				padding-top: 60px;
+				.pagination{
+					font-family: '微软雅黑';
+					font-size: 14px;
+					line-height: 48px;
+					margin: 0 auto;
+					text-align: center;
+					overflow: hidden;
+					a{
+						border: 1px solid #CCCCCC;
+						padding: 13px 13px;
+						color: #666;
+						text-decoration: none;
+						margin: 0px 2px;
+						cursor: pointer;
+					}
+					a:hover{
+						border-color: #4ba737;
+					}
+					a.active{
+						background: #4ba737;
+						color: #fff;
+						border: 1px solid transparent;
+					}
+				}
+			}
+		}
+		
+	}
+}
+@media (max-width:768px){
+	.enginerringCase{
+		.case{
+			width: 100%;
+			.wrap{
+				padding: 0 15px;
+				.list{
+					ul{
+						li{
+							width: calc(~"50% - 12px");
+							margin: 0 20px 0 0;
+							.pp{
+								height: 30px;
+								line-height: 30px;
+								font-size: 14px;
+							}
+						}
+						li:nth-of-type(2n){
+							margin-right: 0;
+						}
+					}
+				}
+				.page{
+					padding-top: 30px;
+					.pagination{
+						font-size: 14px;
+						line-height: 42px;
+						a{
+							border: 1px solid #CCCCCC;
+							padding: 5px 5px;
+							color: #666;
+							text-decoration: none;
+							margin: 0px 2px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

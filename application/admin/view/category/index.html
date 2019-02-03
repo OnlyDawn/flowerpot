@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>花盆网</title>
+    <link rel="shortcut icon" href="__PUBLIC__/static/index.ico" />
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/static/admin/layui/css/layui.css" />
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/static/admin/css/admin.css" />
 </head>
@@ -21,7 +22,7 @@
             <table class="layui-table" lay-even lay-skin="nob">
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    <th class="hidden-xs">ID</th>
                     <th>分类名称</th>
                     <th>操作</th>
                 </tr>
@@ -30,7 +31,7 @@
                 {volist name='list' id='category'}
                 <tr>
                     <td class="hidden-xs">{$category.id}</td>
-                    <td class="hidden-xs">{$category.name}</td>
+                    <td>{$category.name}</td>
                     <td>
                         <div class="layui-inline">
                             <button class="layui-btn layui-btn-small layui-btn-normal" data-id="1" onclick="update({$category.id},'{$category.name}')"><i class="layui-icon">&#xe642;</i></button>

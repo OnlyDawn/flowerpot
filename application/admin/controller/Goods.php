@@ -8,9 +8,9 @@ use \think\Db;
 use app\admin\model\FileUpload;
 
 /*
- * 商品
+ * 产品
  */
-class Goods extends Controller
+class Goods extends Common
 {
     /*
      * 列表
@@ -21,7 +21,7 @@ class Goods extends Controller
             ->alias('g')
             ->field('g.*,c.name as categoryName')
             ->join('fp_category c','g.category_id=c.id')
-            ->order('g.id desc')->paginate(2);
+            ->order('g.id desc')->paginate(20);
         $page = $list->render();
         $this->assign('list',$list);
         $this->assign('page',$page);
@@ -87,59 +87,69 @@ class Goods extends Controller
     public function Update()
     {
         if(Request::instance()->isPost()){
+
+            $id = input('post.id');
+            //检查id是否存在
+            if(!$id){
+                $this->error('修改失败，请重新修改');
+            }
+            $name = input('post.name');
+            $category_id = input('post.category_id');
+            $content = input('post.content');
+            $url = input('post.url');
+            $sort = input('post.sort');
+
             //检查文件格式
             $file = $_FILES['image'];
-            $type = false;
-            if($file){
+            if(!empty($file['tmp_name'])){
                 $FileUpload = new FileUpload();
-                $type = $FileUpload->CheckFileType($file);
-            }
-            if(!$type){
-                $this->error('图片格式错误');
-            }
+                $file_type = $FileUpload->CheckFileType($file);
+                if(!$file_type){
+                    $this->error('图片格式错误');
+                }
 
-            //上传图片
-            $file = request()->file('image');
-            $fileUploadStr = $FileUpload->Upload($file);
-            if($fileUploadStr && is_string($fileUploadStr)){
-                //检查id是否存在
-                $id = input('post.id');
-                if($id){
+                //上传图片
+                $file = request()->file('image');
+                $fileUploadStr = $FileUpload->Upload($file);
+                if($fileUploadStr && is_string($fileUploadStr)){
                     $findInfo = Db::name('goods')->find($id);
                     if($findInfo){
                         //删除之前的图片
-                        $file = ROOT_PATH.'/public/'.$findInfo['image'];
-                        if(file_exists($file)){
-                            unlink($file);
+                        $load_file = ROOT_PATH.'/public/'.$findInfo['image'];
+                        if(file_exists($load_file)){
+                            unlink($load_file);
                         }
                     }
-                }else{
-                    $this->error('修改失败，请重新修改');
-                }
+                    $data = [
+                        'id' => $id,
+                        'name' => $name,
+                        'image' => 'uploads\\'.$fileUploadStr,
+                        'category_id' => $category_id,
+                        'content' => $content,
+                        'url' => $url,
+                        'sort' => $sort,
+                        'ctime' => time()
+                    ];
 
-                $name = input('post.name');
-                $category_id = input('post.category_id');
-                $content = input('post.content');
-                $url = input('post.url');
-                $sort = input('post.sort');
+                }else{
+                    $this->error('上传图片错误');
+                }
+            }else{
                 $data = [
                     'id' => $id,
                     'name' => $name,
-                    'image' => 'uploads\\'.$fileUploadStr,
                     'category_id' => $category_id,
                     'content' => $content,
                     'url' => $url,
                     'sort' => $sort,
                     'ctime' => time()
                 ];
-                $update = Db::name('goods')->update($data);
-                if($update){
-                    $this->redirect('/admin/goods/index');
-                }else{
-                    $this->error('添加失败，请重新添加');
-                }
+            }
+            $update = Db::name('goods')->update($data);
+            if($update){
+                $this->redirect('/admin/goods/index');
             }else{
-                $this->error('上传图片错误');
+                $this->error('添加失败，请重新添加');
             }
         }else{
             $id = Request::instance()->get('id');

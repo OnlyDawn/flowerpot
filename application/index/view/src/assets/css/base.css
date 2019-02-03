@@ -1,0 +1,62 @@
+
+/* CSS Document */
+*{padding:0; margin:0;box-sizing:border-box;}
+h1,h2,h3,h4,h5,h6,ul,li,p,form,label,nav,footer,aside,header,section,article,dialog,figure,figcaption,hgroup{display:block;}
+ul{list-style:none;}
+.clearfix:after{clear:both; height:0; visibility:hidden; content:"."; display:block;}
+a{text-decoration:none; outline:none;}
+.ellipsis{white-space:nowrap;/*空白不换行*/ text-overflow:ellipsis; overflow: hidden;}
+body{overflow-x:hidden; font-family: "Microsoft YaHei"; background: #ffffff;}
+
+.w280{width: 280px; margin: 0 auto;}
+.h_title{padding: 55px 0 48px 0; margin: 0 auto; text-align: center; display: block;}
+.h_title .img img{display: block; margin: 0 auto; width: 38px;}
+.h_title .txt{width: 100%;height: 20px;line-height: 20px;margin: 10px 0 5px 0;text-transform: uppercase;font-size: 12px;color: #7c7c7c;background: url(../img/index_greyline.jpg) left center repeat-x;}
+.h_title .txt p{display: inline-block;background: #fff;padding: 0 8px;}
+.h_title h4{width: 100%; height: 24px; line-height: 24px; color: #7c7c7c;font-size: 18px;font-weight: normal;}
+.banner img{display: block; width: 100%; z-index: 1000;}
+.t1{max-width: 280px; overflow: hidden;}
+.t2{max-width: 365px; overflow: hidden;}
+.t3{max-width: 357px; overflow: hidden;}
+.t4{max-width: 195px; overflow: hidden;}
+.t5{max-width: 147px; overflow: hidden;}
+
+/* a{
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	-webkit-user-select: none;
+	-moz-user-focus: none;
+	-moz-user-select: none;
+} */
+
+.index .h_title .img img{width: 24px;}
+.product .h_title .img img{width: 29px;}
+.enginerringCase .h_title .img img{width: 32px;}
+
+.zzc{background: #000000; opacity: 0.3; width: 100%; height: 100vh; position: fixed; top: 0; left: 0; z-index: 1999;}
+.propup{width: 100%; position: fixed; bottom: -141px; left: 0; z-index: 2000; background: #fff; color: #168301; border-top: 1px solid #ccc;}
+/* .propup ul{padding-top: 20px;} */
+.propup li{height: 70px; width: 49%; float: left; line-height: 70px; font-size: 18px; text-align: center;}
+.propup li:nth-of-type(2){border-right: none;}
+.propup li:nth-of-type(2):before{
+	display: block;
+	position: absolute;
+	content: '';
+	height: 50px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-left:1px solid #ccc;
+}
+@media (max-width: 768px) {
+  .hidden-xs {
+    display: none !important;
+  }
+	.h_title{
+		padding: 25px 0 28px 0;
+		transform: scale(0.8,0.8);
+	}
+}
+@media (min-width: 769px) {
+  .hidden-pc {
+    display: none !important;
+  }
+}

@@ -9,14 +9,14 @@ use \think\Request;
 /*
  * 分类
  */
-class Category extends Controller
+class Category extends Common
 {
     /*
      *  列表
      */
     public function Index()
     {
-        $list = Db::name('category')->order('id desc')->paginate(10);
+        $list = Db::name('category')->order('id desc')->paginate(20);
         $page = $list->render();
         $this->assign('list',$list);
         $this->assign('page',$page);

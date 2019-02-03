@@ -8,7 +8,7 @@ use \think\Db;
 /*
  * 项目案例
  */
-class ProjectCase extends Controller
+class ProjectCase extends Common
 {
     /*
      * 列表数据

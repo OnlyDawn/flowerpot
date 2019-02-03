@@ -1,0 +1,118 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"D:\work\flowerpot\public/../application/admin\view\index\index.html";i:1544280928;}*/ ?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>花盆网</title>
+		<link rel="shortcut icon" href="/static/index.ico" />
+		<link rel="shortcut icon" href="/static/index.ico" />
+		<link rel="stylesheet" type="text/css" href="/static/admin/layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/admin/css/admin.css"/>
+	</head>
+	<body>
+		<div class="main-layout" id='main-layout'>
+			<!--侧边栏-->
+			<div class="main-layout-side">
+				<div class="m-logo">
+					<!--<img src="/static/admin/images/login_logo.jpg" alt="">-->
+				</div>
+				<ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
+			      <li class="layui-nav-item">
+					<a href="/admin/carousel/index" target="iframe" data-id='4' data-text="轮播管理"><i class="iconfont">&#xe60c;</i>轮播管理</a>
+				  </li>
+				  <li class="layui-nav-item">
+				    <a href="/admin/goods/index" target="iframe" data-id='4' data-text="产品中心"><i class="iconfont">&#xe602;</i>产品中心</a>
+				  </li>
+				  <li class="layui-nav-item">
+				    <a href="/admin/news/index" target="iframe" data-id='4' data-text="新闻资讯"><i class="iconfont">&#xe605;</i>新闻资讯</a>
+				  </li>
+				  <li class="layui-nav-item">
+					<a href="/admin/project_case/index" target="iframe" data-id='4' data-text="工程案例"><i class="iconfont">&#xe639;</i>工程案例</a>
+				  </li>
+				  <li class="layui-nav-item">
+     		        <a href="/admin/category/index" target="iframe" data-id='4' data-text="分类管理"><i class="iconfont">&#xe604;</i>分类管理</a>
+				  </li>
+				</ul>
+			</div>
+			<!--右侧内容-->
+			<div class="main-layout-container">
+				<!--头部-->
+				<div class="main-layout-header">
+					<div class="menu-btn" id="hideBtn">
+						<a href="javascript:;">
+							<span class="iconfont">&#xe60e;</span>
+						</a>
+					</div>
+					<ul class="layui-nav" lay-filter="rightNav">
+					  <li class="layui-nav-item">
+					    <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息"><?php echo \think\Cookie::get('name'); ?></a>
+					  </li>
+						<li class="layui-nav-item"><a href="javascript:;" onclick="changePwd()">修改密码</a></li>
+
+						<li class="layui-nav-item"><a href="/admin/login/logout">退出</a></li>
+					</ul>
+				</div>
+				<!--主体内容-->
+				<div class="main-layout-body">
+					<!--tab 切换-->
+					<div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+					  <ul class="layui-tab-title">
+					    <!--<li class="layui-this welcome">后台主页</li>-->
+					  </ul>
+					  <div class="layui-tab-content">
+					    <div class="layui-tab-item layui-show" style="background: #f5f5f5;">
+					    	<!--1-->
+					    	<iframe src="/index.php/admin/index/welcome" width="100%" height="100%" name="iframe" scrolling="auto" class="iframe" framborder="0"></iframe>
+					    	<!--1end-->
+					    </div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<!--遮罩-->
+			<div class="main-mask">l
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			var scope={
+				link:'./welcome.html'
+			}
+		</script>
+		<script src="/static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/admin/js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/admin/js/main.js" type="text/javascript" charset="utf-8"></script>
+		
+	</body>
+</html>
+<script>
+    function changePwd()
+    {
+        //页面层
+        layer.open({
+            type: 1,
+            skin: 'layui-layer-rim', //加上边框
+            area: ['420px', '240px'], //宽高
+            content: '<div class="wrap-container" ">\n' +
+            '    <form class="layui-form" action="/admin/login/changePwd" method="post" style="width: 80%;padding-top: 20px;">\n' +
+            '        <div class="layui-form-item">\n' +
+            '            <label class="layui-form-label">新密码：</label>\n' +
+            '            <div class="layui-input-block">\n' +
+            '                <input type="text" name="password" required lay-verify="required" placeholder="请输入新密码" autocomplete="off" class="layui-input">\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '\n' +
+            '        <div class="layui-form-item">\n' +
+            '            <div class="layui-input-block">\n' +
+            '                <button class="layui-btn layui-btn-normal" onclick="submit" >立即提交</button>\n' +
+            '                <button type="reset" class="layui-btn layui-btn-primary">重置</button>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '    </form>\n' +
+            '</div>'
+        });
+    }
+</script>

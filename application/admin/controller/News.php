@@ -9,7 +9,7 @@ use \think\Request;
 /*
  * 新闻资讯
  */
-class News extends Controller
+class News extends Common
 {
     /*
      * 列表
@@ -17,7 +17,7 @@ class News extends Controller
     public function Index()
     {
         $list = Db::name('news')
-            ->order('id desc')->paginate(10);
+            ->order('id desc')->paginate(20);
         $page = $list->render();
         $this->assign('list',$list);
         $this->assign('page',$page);
@@ -32,8 +32,8 @@ class News extends Controller
         if(Request::instance()->isPost()){
             $data = input();
             if($data) {
-                $data['ctime'] = time();
-                unset($data['file']);
+                $data['ctime'] = !isset($data['time'])?strtotime($data['time']):time();
+                unset($data['file'],$data['time']);
                 $insert = Db::name('news')->insert($data);
                 if ($insert) {
                     $this->redirect('/admin/news/index');
@@ -56,6 +56,8 @@ class News extends Controller
         if(Request::instance()->isPost()){
             $data = input();
             if($data) {
+                $data['ctime'] = isset($data['time'])?strtotime($data['time']):time();
+                unset($data['file'],$data['time']);
                 unset($data['file']);
                 $update = Db::name('news')->update($data);
                 if ($update) {
@@ -70,6 +72,7 @@ class News extends Controller
             $id = Request::instance()->get('id');
             if($id) {
                 $newsInfo = Db::name('news')->find($id);
+                $newsInfo['ctime'] = date('Y-m-d',$newsInfo['ctime']);
                 if($newsInfo) {
                     $this->assign('data',$newsInfo);
                     return $this->fetch('update');

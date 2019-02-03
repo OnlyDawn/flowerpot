@@ -11,14 +11,14 @@ use app\admin\model\FileUpload;
 /*
  * 轮播管理
  */
-class Carousel extends Controller
+class Carousel extends Common
 {
     /*
      * 列表
      */
     public function Index()
     {
-        $list = Db::name('carousel')->order('id desc')->paginate(10);
+        $list = Db::name('carousel')->order('id desc')->paginate(20);
         $page = $list->render();
         $this->assign('list',$list);
         $this->assign('page',$page);
@@ -50,10 +50,12 @@ class Carousel extends Controller
                 $image = $fileUploadStr;
                 $title = input('post.title');
                 $sort = input('post.sort');
+                $type = input('post.type');
                 $data = [
                     'title' => $title,
                     'image' => 'uploads\\'.$image,
-                    'sort' => $sort
+                    'sort' => $sort,
+                    'type' => $type
                 ];
                 $insert = Db::name('carousel')->insert($data);
                 if($insert){
@@ -76,53 +78,66 @@ class Carousel extends Controller
     public function Update()
     {
         if (Request::instance()->isPost()) {
+            //检查id是否存在
+            $id = input('post.id');
+            if(!$id){
+                $this->error('修改失败，请重新修改');
+            }
+            //修改
+            $title = input('post.title');
+            $sort = input('post.sort');
+            $type = input('post.type');
+
             //检查文件格式
             $file = $_FILES['image'];
-            $type = false;
-            if($file){
+            if(!empty($file['tmp_name'])){
                 $FileUpload = new FileUpload();
-                $type = $FileUpload->CheckFileType($file);
-            }
-            if(!$type){
-                $this->error('图片格式错误');
-            }
-
-            //上传图片
-            $file = request()->file('image');
-            $fileUploadStr = $FileUpload->Upload($file);
-            if($fileUploadStr && is_string($fileUploadStr)){
-                //检查id是否存在
-                $id = input('post.id');
-                if($id){
-                  $findInfo = Db::name('carousel')->find($id);
-                  if($findInfo){
-                      //删除之前的图片
-                      $file = ROOT_PATH.'/public/'.$findInfo['image'];
-                      if(file_exists($file)){
-                          unlink($file);
-                      }
-                  }
-                }else{
-                    $this->error('修改失败，请重新修改');
+                $file_type = $FileUpload->CheckFileType($file);
+                if(!$file_type){
+                    $this->error('图片格式错误');
                 }
+                //上传图片
+                $file = request()->file('image');
+                $fileUploadStr = $FileUpload->Upload($file);
+                if($fileUploadStr && is_string($fileUploadStr)){
+                    $findInfo = Db::name('carousel')->find($id);
+                    if($findInfo){
+                        //删除之前的图片
+                        $local_file = ROOT_PATH.'/public/'.$findInfo['image'];
+                        if(file_exists($local_file)){
+                            unlink($local_file);
+                        }
+                    }
+                    $data = [
+                        'id' => $id,
+                        'title' => $title,
+                        'image' => 'uploads\\'.$fileUploadStr,
+                        'sort' => $sort,
+                        'type' => $type
+                    ];
+                }else{
+                    $this->error('上传图片错误');
+                }
+            }else{
                 //修改
                 $title = input('post.title');
                 $sort = input('post.sort');
+                $type = input('post.type');
                 $data = [
                     'id' => $id,
                     'title' => $title,
-                    'image' => 'uploads\\'.$fileUploadStr,
-                    'sort' => $sort
+                    'sort' => $sort,
+                    'type' => $type
                 ];
-                $update = Db::name('carousel')->update($data);
-                if($update){
-                    $this->redirect('index.php/admin/carousel/index');
-                }else{
-                    $this->error('修改失败，请重新修改');
-                }
-            }else{
-                $this->error('上传图片错误');
             }
+
+            $update = Db::name('carousel')->update($data);
+            if($update){
+                $this->redirect('index.php/admin/carousel/index');
+            }else{
+                $this->error('修改失败，请重新修改');
+            }
+
         }else{
             $id = Request::instance()->get('id');
             if ($id) {

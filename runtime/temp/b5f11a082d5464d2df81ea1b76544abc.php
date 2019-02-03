@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:70:"D:\work\flowerpot\public/../application/admin\view\category\index.html";i:1543755579;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:70:"D:\work\flowerpot\public/../application/admin\view\category\index.html";i:1544344572;}*/ ?>
 <!DOCTYPE html>
 <html class="iframe-h">
 
@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>花盆网</title>
+    <link rel="shortcut icon" href="/static/index.ico" />
     <link rel="stylesheet" type="text/css" href="/static/admin/layui/css/layui.css" />
     <link rel="stylesheet" type="text/css" href="/static/admin/css/admin.css" />
 </head>
@@ -22,7 +23,7 @@
             <table class="layui-table" lay-even lay-skin="nob">
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    <th class="hidden-xs">ID</th>
                     <th>分类名称</th>
                     <th>操作</th>
                 </tr>
@@ -31,7 +32,7 @@
                 <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$category): $mod = ($i % 2 );++$i;?>
                 <tr>
                     <td class="hidden-xs"><?php echo $category['id']; ?></td>
-                    <td class="hidden-xs"><?php echo $category['name']; ?></td>
+                    <td><?php echo $category['name']; ?></td>
                     <td>
                         <div class="layui-inline">
                             <button class="layui-btn layui-btn-small layui-btn-normal" data-id="1" onclick="update(<?php echo $category['id']; ?>,'<?php echo $category['name']; ?>')"><i class="layui-icon">&#xe642;</i></button>

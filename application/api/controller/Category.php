@@ -10,7 +10,7 @@ use app\api\model\ErrorCode;
 /*
  * 分类
  */
-class Category extends Controller
+class Category extends Common
 {
     /*
      * 分类数据
